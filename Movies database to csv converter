@@ -1,0 +1,124 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNJ0emftyoubfTp5iL6yZsS",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/POOJA894866/Pooja-Shetty/blob/main/Movies%20database%20to%20csv%20converter\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import csv\n",
+        "\n",
+        "# Define the structure of the movie data\n",
+        "class Movie:\n",
+        "    def __init__(self, title, director, year, genre, rating):\n",
+        "        self.title = title\n",
+        "        self.director = director\n",
+        "        self.year = year\n",
+        "        self.genre = genre\n",
+        "        self.rating = rating\n",
+        "\n",
+        "# Function to add movies (simulated for demonstration purposes)\n",
+        "def get_movies():\n",
+        "    # Simulated movie data\n",
+        "    movies = [\n",
+        "        Movie(\"The Shawshank Redemption\", \"Frank Darabont\", 1994, \"Drama\", 9.3),\n",
+        "        Movie(\"The Godfather\", \"Francis Ford Coppola\", 1972, \"Crime\", 9.2),\n",
+        "        Movie(\"The Dark Knight\", \"Christopher Nolan\", 2008, \"Action\", 9.0),\n",
+        "        Movie(\"Pulp Fiction\", \"Quentin Tarantino\", 1994, \"Crime\", 8.9),\n",
+        "        Movie(\"Forrest Gump\", \"Robert Zemeckis\", 1994, \"Drama\", 8.8),\n",
+        "    ]\n",
+        "    return movies\n",
+        "\n",
+        "# Save movies to a CSV file\n",
+        "def save_to_csv(movies, filename):\n",
+        "    with open(filename, mode='w', newline='', encoding='utf-8') as file:\n",
+        "        writer = csv.writer(file)\n",
+        "        # Write header row\n",
+        "        writer.writerow([\"Title\", \"Director\", \"Year\", \"Genre\", \"Rating\"])\n",
+        "        # Write movie data\n",
+        "        for movie in movies:\n",
+        "            writer.writerow([movie.title, movie.director, movie.year, movie.genre, movie.rating])\n",
+        "\n",
+        "# Display the contents of the CSV file\n",
+        "def display_csv(filename):\n",
+        "    print(f\"\\nContents of {filename}:\")\n",
+        "    with open(filename, mode='r', encoding='utf-8') as file:\n",
+        "        reader = csv.reader(file)\n",
+        "        for row in reader:\n",
+        "            print(\", \".join(row))\n",
+        "\n",
+        "# Main script\n",
+        "def main():\n",
+        "    movies = get_movies()  # Simulate getting movie data\n",
+        "    filename = \"movies_database.csv\"\n",
+        "\n",
+        "    # Save movies to CSV\n",
+        "    save_to_csv(movies, filename)\n",
+        "    print(f\"Data saved to {filename} successfully!\")\n",
+        "\n",
+        "    # Display the CSV file contents\n",
+        "    display_csv(filename)\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    main()\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SbCGnsHvB7dB",
+        "outputId": "03edf1fa-0f78-4e0a-9aba-5fd88f6fa6c6"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Data saved to movies_database.csv successfully!\n",
+            "\n",
+            "Contents of movies_database.csv:\n",
+            "Title, Director, Year, Genre, Rating\n",
+            "The Shawshank Redemption, Frank Darabont, 1994, Drama, 9.3\n",
+            "The Godfather, Francis Ford Coppola, 1972, Crime, 9.2\n",
+            "The Dark Knight, Christopher Nolan, 2008, Action, 9.0\n",
+            "Pulp Fiction, Quentin Tarantino, 1994, Crime, 8.9\n",
+            "Forrest Gump, Robert Zemeckis, 1994, Drama, 8.8\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "tIcwGuBcB7g0"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
